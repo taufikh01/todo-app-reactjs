@@ -1,0 +1,27 @@
+.todo-list {
+    @apply p-4 border-b;
+}
+.inactive {
+    @apply border-b-0 text-darkGrayishBlue;
+}
+
+#todo-check-form {
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+#todo-check {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+#todo-check:checked {
+    content: url("../images/icon-check.svg");
+    padding: 3px;
+    @apply bg-br;
+
+    /* appearance: checkbox; */
+}

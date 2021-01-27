@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+    @apply font-josefinSerif;
+    @apply font-medium;
+    @apply text-darkGrayishBlue;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.flx {
+    @apply flex items-center justify-between;
+}
+
+form:focus-within #todo-check-form {
+    @apply border-darkGrayishBlue;
+}
+.icon-sun {
+    background-image: url(./images/icon-sun.svg);
+}
+.icon-moon {
+    background-image: url(./images/icon-moon.svg);
+}
+.wrapper {
+    width: 100%;
+    /* whatever width you want */
+    display: inline-block;
+    position: relative;
+    background-size: contain;
+    background: url("./images/bg-desktop-dark.jpg") top center no-repeat;
+    margin: 0 auto;
+}
+.wrapper:after {
+    padding-top: 75%;
+    /* this llama image is 800x600 so set the padding top % to match 600/800 = .75 */
+    display: block;
+    content: "";
+}
+.main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    color: black;
+    text-align: center;
+    margin-top: 5%;
 }

@@ -1,0 +1,3 @@
+.header-title {
+    @apply font-bold uppercase text-veryLightGray tracking-4em;
+}
