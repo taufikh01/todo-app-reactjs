@@ -1,24 +1,21 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-import { TodoListContext } from "../context/TodoListContext";
+import { GlobalContext } from "../context/GlobalContext";
 import { NavLink } from "react-router-dom";
 import "./nav.css";
 
 function Nav() {
-    const { darkMode } = useContext(ThemeContext);
-    const { todolist, setTodolist } = useContext(TodoListContext);
+    const { darkMode, todos, setTodos } = useContext(GlobalContext);
     let bgNav = darkMode ? "bg-veryDarkDesaturatedBlue " : "bg-veryLightGray";
 
     const handleClearComplete = () => {
-        // e.preventDefault();
-        setTodolist(todolist.filter((v) => v.is_complete === false));
+        setTodos(todos.filter((v) => v.is_complete === false));
     };
     return (
         <>
             <div className={`flex-row rounded-b-lg ${bgNav}`}>
                 <div className="flex items-center justify-around w-full px-1 py-4">
                     <span className="count-todo-list">
-                        {todolist.filter((v) => v.is_complete === false).length}{" "}
+                        {todos.filter((v) => v.is_complete === false).length}{" "}
                         item left
                     </span>
                     <div className="justify-between hidden w-56 px-2 md:flex">
@@ -72,36 +69,11 @@ function Nav() {
             >
                 <div className="flex items-center justify-around w-full px-1 py-4">
                     <div className="flex justify-between w-56 px-2">
-                        <a
-                            href="http://"
-                            className={`cursor-pointer ${
-                                darkMode
-                                    ? "hover:text-lightGrayishBlueHover"
-                                    : "hover:text-primaryColor"
-                            }`}
-                        >
+                        <NavLink exact to="/">
                             All
-                        </a>
-                        <a
-                            href="http://"
-                            className={`cursor-pointer ${
-                                darkMode
-                                    ? "hover:text-lightGrayishBlueHover"
-                                    : "hover:text-primaryColor"
-                            }`}
-                        >
-                            Active
-                        </a>
-                        <a
-                            href="http://"
-                            className={`cursor-pointer ${
-                                darkMode
-                                    ? "hover:text-lightGrayishBlueHover"
-                                    : "hover:text-primaryColor"
-                            }`}
-                        >
-                            Completed
-                        </a>
+                        </NavLink>
+                        <NavLink to="/active">Active</NavLink>
+                        <NavLink to="/completed">Completed</NavLink>
                     </div>
                 </div>
             </div>

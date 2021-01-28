@@ -1,37 +1,31 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-import { TodoListContext } from "../context/TodoListContext";
+import { GlobalContext } from "../context/GlobalContext";
 import "./todo.css";
 import iconCross from "../images/icon-cross.svg";
 
 function Todo({ status = "all" }) {
-    const { darkMode } = useContext(ThemeContext);
-    const { todolist, setTodolist } = useContext(TodoListContext);
+    const { todos, darkMode, toggleComplete, handleDeleteTodo } = useContext(
+        GlobalContext
+    );
     let bgList = darkMode ? "bg-veryDarkDesaturatedBlue " : "bg-veryLightGray";
     let hover = darkMode ? "hover:text-lightGrayishBlueHover" : "";
-    const toggleComplete = (id) => {
-        setTodolist(
-            todolist.map((todo) => {
-                if (todo.id === id) {
-                    todo.is_complete = !todo.is_complete;
-                }
-                return todo;
-            })
-        );
-    };
-    const handleDeleteTodo = (id) => {
-        setTodolist(todolist.filter((todo) => todo.id !== id));
-    };
-    const todos =
-        status === "all"
-            ? todolist
-            : status === "active"
-            ? todolist.filter((v) => v.is_complete === false)
-            : todolist.filter((v) => v.is_complete === true);
+    let todo =
+        status === "active"
+            ? todos.filter((v) => v.is_complete === false)
+            : status === "completed"
+            ? todos.filter((v) => v.is_complete === true)
+            : todos;
+
     return (
-        <>
-            <div className={`mt-4 rounded-t-lg ${bgList}`}>
-                {todos.map((v) => {
+        <div className={`mt-4 rounded-t-lg ${bgList}`}>
+            {todos.length === 0 ? (
+                <h1 className="p-4">Add Todo</h1>
+            ) : todo.length === 0 && status === "active" ? (
+                <h1 className="p-4">None todo is active</h1>
+            ) : todo.length === 0 && status === "completed" ? (
+                <h1 className="p-4">None todo is completed</h1>
+            ) : (
+                todo.map((v) => {
                     return (
                         <div key={v.id}>
                             <div
@@ -77,9 +71,9 @@ function Todo({ status = "all" }) {
                             </div>
                         </div>
                     );
-                })}
-            </div>
-        </>
+                })
+            )}
+        </div>
     );
 }
 export default Todo;

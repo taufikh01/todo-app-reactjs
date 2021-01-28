@@ -1,30 +1,22 @@
-import React, { useContext, useState, useEffect } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-import { TodoListContext } from "../context/TodoListContext";
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 
 function AddTodo() {
-    const { darkMode } = useContext(ThemeContext);
-    const { todolist, setTodolist } = useContext(TodoListContext);
+    const { todos, darkMode, setTodos, idLastRow } = useContext(GlobalContext);
 
-    const [idLastRow, setIdLastRow] = useState(
-        todolist[todolist.length - 1].id
-    );
     let bgForm = darkMode ? "bg-veryDarkDesaturatedBlue " : "bg-veryLightGray";
 
     const handleKeyPress = (e) => {
         if (e.charCode === 13) {
-            todolist.push({
+            todos.push({
                 id: idLastRow + 1,
                 todo: e.target.value,
                 is_complete: false,
             });
-            setTodolist(todolist.map((v) => v));
+            setTodos(todos.map((v) => v));
             e.target.value = "";
         }
     };
-    useEffect(() => {
-        setIdLastRow(todolist[todolist.length - 1].id);
-    }, [todolist]);
     return (
         <>
             <div className="mt-3 input-todo">

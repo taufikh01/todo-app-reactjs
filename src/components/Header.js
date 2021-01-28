@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import "./header.css";
-import { ThemeContext } from "../context/ThemeContext";
+import { GlobalContext } from "../context/GlobalContext";
 import iconSun from "../images/icon-sun.svg";
 import iconMoon from "../images/icon-moon.svg";
 
 export default function Header() {
-    const { darkMode, setDarkMode } = useContext(ThemeContext);
+    const { toggleTheme, darkMode } = useContext(GlobalContext);
     let iconTheme = darkMode ? iconSun : iconMoon;
     return (
         <header className="flx">
@@ -14,7 +14,7 @@ export default function Header() {
                 src={iconTheme}
                 alt=""
                 className="cursor-pointer"
-                onClick={() => setDarkMode(!darkMode)}
+                onClick={() => toggleTheme()}
             />
         </header>
     );
