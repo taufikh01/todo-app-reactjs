@@ -21,6 +21,7 @@ function AddTodo() {
         <>
             <div className="mt-3 input-todo">
                 <input
+                    aria-label="checkbox add todo"
                     type="checkbox"
                     className={`absolute p-2.5 mt-4 ml-4 border rounded-full appearance-none ${
                         darkMode
@@ -31,6 +32,7 @@ function AddTodo() {
                 <input
                     type="text"
                     id="addTodo"
+                    aria-label="input add todo"
                     className={`w-full px-12 py-4 rounded-lg ${bgForm}`}
                     placeholder="Create a new todo.."
                     name="add_todo"

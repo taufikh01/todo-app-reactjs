@@ -37,6 +37,7 @@ function Todo({ status = "all" }) {
                             >
                                 <div className="flx">
                                     <input
+                                        aria-labelledby={`todo${v.id}`}
                                         type="checkbox"
                                         name="todo_check"
                                         checked={v.is_complete ? true : false}
@@ -49,6 +50,7 @@ function Todo({ status = "all" }) {
                                         }`}
                                     />
                                     <span
+                                        id={`todo${v.id}`}
                                         className={`mx-4 cursor-pointer transform hover:scale-105 ${hover} ${
                                             v.is_complete && darkMode
                                                 ? `line-through text-veryDarkGrayishBlue1`
