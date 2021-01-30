@@ -38,12 +38,11 @@ function Todo({ status = "all" }) {
                                 <div className="flx">
                                     <input
                                         type="checkbox"
-                                        name=""
-                                        id="todo-check"
+                                        name="todo_check"
                                         checked={v.is_complete ? true : false}
                                         onClick={() => toggleComplete(v.id)}
                                         onChange={(e) => e.target.value}
-                                        className={`border rounded-full cursor-pointer hover:border-primaryColor ${
+                                        className={`border todo-check rounded-full cursor-pointer hover:border-primaryColor ${
                                             darkMode
                                                 ? "border-veryDarkGrayishBlue1"
                                                 : "border-lightGrayishBlue"
