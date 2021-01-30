@@ -4,8 +4,12 @@ module.exports = {
     theme: {
         extend: {
             screens: {
-                mobile: { max: "375px" },
-                desktop: { max: "1440px" },
+                xs: "376px",
+                sm: "640px",
+                md: "768px",
+                lg: "1024px",
+                xl: "1280px",
+                "2xl": "1536px",
             },
             colors: {
                 primaryColor: "hsl(220, 98%, 61%)",

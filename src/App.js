@@ -22,13 +22,13 @@ function App() {
                         <div
                             className={`absolute w-full bg-cover py-28 ${
                                 darkMode ? "bg-mobile-dark" : "bg-mobile-light"
-                            } md:${
+                            } ${
                                 darkMode
-                                    ? "bg-desktop-dark"
-                                    : "bg-desktop-light"
+                                    ? "xs:bg-desktop-dark"
+                                    : "xs:bg-desktop-light"
                             }`}
                         ></div>
-                        <div className="relative w-10/12 mx-auto top-16 sm:w-10/12 md:w-8/12 lg:w-4/12">
+                        <div className="relative w-10/12 mx-auto top-16 sm:w-8/12 lg:w-5/12">
                             <Header />
                             <AddTodo />
                             <Router>
